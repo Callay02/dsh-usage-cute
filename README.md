@@ -6,13 +6,16 @@ A cute DeepSeek token-usage & account-balance panel for the DeepSeek Harness Web
 
 ## ✨ 功能
 
-- 💳 **账户余额**：查询 DeepSeek `/user/balance`，展示总余额、充值余额、赠送余额与可用状态
+- 💳 **多账号余额**：DeepSeek（`/user/balance`）与硅基流动 SiliconFlow（`/user/info`）多账号切换，展示总余额、充值余额、赠送余额与可用状态
+- 🔑 **账号切换**：面板下拉框切换 DeepSeek 多 key / SiliconFlow 账号，选择自动记忆（localStorage）
 - 📊 **Token 用量**：聚合所有会话事件，按天/按模型统计今日、本月、累计用量与缓存命中率
 - 📈 **14 天迷你柱状图**：粉色渐变柱，悬停变蓝
 - 🐣 **可爱设计**：improved-1 吉祥物、粉蓝渐变色卡、大圆角、弹入动画
 - 🖱️ **可拖动面板**：按住头部拖动，位置自动记忆（localStorage）
 - 🔒 **本机安全**：端点仅限回环 GET；API Key 只在服务端解析，不发往浏览器
 - 🔄 **自动刷新**：每 5 分钟自动更新
+
+> 账号来源：`~/.dsh/.credentials.yaml` 中所有 `DEEPSEEK_API_KEY*` 前缀的 key，以及 `settings.yaml` 里 `llm-pi-ai.providers` 中 baseURL 指向 SiliconFlow（`api.siliconflow.cn`）的 provider。其他无公开余额接口的 provider（官方 OpenAI 等）不显示余额。
 
 ## 📦 安装
 
@@ -46,7 +49,8 @@ dsh-usage-cute/
 ## 📝 开发说明
 
 - 服务端注入 `webServer / credentials / settings / sessions / sessionPersistence` 服务
-- 余额端点：`GET /api/usage-cute/balance`
+- 账号列表端点：`GET /api/usage-cute/accounts`
+- 余额端点：`GET /api/usage-cute/balance?account=<provider>:<ref>`
 - 用量端点：`GET /api/usage-cute/usage`
 - Logo 端点：`GET /api/usage-cute/logo.png`
 - 客户端为手写 `__ModuleLoader__` bundle，无构建步骤
