@@ -1,0 +1,4 @@
+# Cute usage & balance plugin — DeepSeek Harness profile bundle.
+- insert:
+    - id: usage-cute
+      name: "dsh-usage-cute"
