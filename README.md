@@ -15,7 +15,7 @@ A cute DeepSeek token-usage & account-balance panel for the DeepSeek Harness Web
 - 🔒 **本机安全**：端点仅限回环 GET；API Key 只在服务端解析，不发往浏览器
 - 🔄 **自动刷新**：每 5 分钟自动更新
 
-> 账号来源：`~/.dsh/.credentials.yaml` 中所有 `DEEPSEEK_API_KEY*` 前缀的 key，以及 `settings.yaml` 里 `llm-pi-ai.providers` 中 baseURL 指向 SiliconFlow（`api.siliconflow.cn`）的 provider。其他无公开余额接口的 provider（官方 OpenAI 等）不显示余额。
+> 账号来源：`~/.dsh/.credentials.yaml` 中的**所有 key**，按 key 名自动推断余额接口——`DEEPSEEK_API_KEY*` → DeepSeek（`/user/balance`）；含 `SILICONFLOW` 或 `OPENAI_API_KEY` → 硅基流动（`/user/info`）；其他 key 会列出但显示「无余额接口」。官方 OpenAI 等无公开余额接口的 provider 不显示余额。
 
 ## 📦 安装
 
